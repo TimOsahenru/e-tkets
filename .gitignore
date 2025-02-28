@@ -1,0 +1,8 @@
+# Ignore Python cache files
+__pycache__/
+*.pyc
+*.pyo
+.requirements.txt.swp
+.todo/
+db.sqlite3
+.e-tkets/
