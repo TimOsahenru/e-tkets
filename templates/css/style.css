@@ -171,6 +171,10 @@ ol {
 .price-item .tr-tag,
 .schedule-tab .nav-tabs .nav-item .nav-link.active,
 .site-btn {
+	margin-top: 30px; /* Adjust this value as needed */
+	display: block; /* Ensure the button takes full width if needed */
+	width: 100%; /* Optional: Make the button full width */
+	text-align: center; /* Center the button text */	
 	background-image: -o-linear-gradient(330deg, #ee8425 0%, #f9488b 100%), -o-linear-gradient(330deg, #ee8425 0%, #f9488b 100%);
 	background-image: linear-gradient(120deg, #ee8425 0%, #f9488b 100%), linear-gradient(120deg, #ee8425 0%, #f9488b 100%);
 }
@@ -2546,3 +2550,108 @@ ol {
 		margin-left: 5px;
 	}
 }
+
+/* Style for dropdown container */
+.styled-dropdown {
+	width: 100%;
+	padding: 10px;
+	font-size: 16px;
+	border: 2px solid #ccc;
+	border-radius: 4px;
+	background-color: #fff;
+	appearance: none; /* Remove default arrow */
+	-webkit-appearance: none; /* Remove default arrow for Safari */
+	-moz-appearance: none; /* Remove default arrow for Firefox */
+	background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23333%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+	background-repeat: no-repeat;
+	background-position: right 10px center;
+	background-size: 12px;
+	cursor: pointer;
+  }
+  
+  /* Hover and Focus Styles */
+  .styled-dropdown:hover {
+	border-color: #888;
+  }
+  
+  .styled-dropdown:focus {
+	border-color: #4CAF50;
+	outline: none;
+	box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+  }
+  
+  /* Style for dropdown options */
+  .styled-dropdown option {
+	padding: 10px;
+	font-size: 16px;
+  }
+
+  /* Style for the checkbox container */
+  /* Add margin to the checkbox container */
+.checkbox-container {
+	margin-top: 20px; /* Adjust this value as needed */
+  }
+  
+.checkbox-label {
+	display: block;
+	position: relative;
+	padding-left: 30px;
+	cursor: pointer;
+	font-size: 16px;
+	user-select: none;
+  }
+  
+  /* Hide the default checkbox */
+  .checkbox-label input {
+	position: absolute;
+	opacity: 0;
+	cursor: pointer;
+	height: 0;
+	width: 0;
+  }
+  
+  /* Create a custom checkbox */
+  .checkmark {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 20px;
+	width: 20px;
+	background-color: #eee;
+	border: 2px solid #ccc;
+	border-radius: 4px;
+  }
+  
+  /* On hover, change the background color */
+  .checkbox-label:hover input ~ .checkmark {
+	background-color: #ddd;
+  }
+  
+  /* When the checkbox is checked, change the background color */
+  .checkbox-label input:checked ~ .checkmark {
+	background-color: #4CAF50; /* Green background */
+	border-color: #4CAF50;
+  }
+  
+  /* Create the checkmark (hidden when not checked) */
+  .checkmark:after {
+	content: "";
+	position: absolute;
+	display: none;
+  }
+  
+  /* Show the checkmark when checked */
+  .checkbox-label input:checked ~ .checkmark:after {
+	display: block;
+  }
+  
+  /* Style the checkmark */
+  .checkbox-label .checkmark:after {
+	left: 6px;
+	top: 2px;
+	width: 5px;
+	height: 10px;
+	border: solid white;
+	border-width: 0 2px 2px 0;
+	transform: rotate(45deg);
+  }
