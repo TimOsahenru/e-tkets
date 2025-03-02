@@ -1,6 +1,17 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from events.forms import EventCreateForm
+from django.urls import reverse
 
 
 def create_event(request):
-    return render(request, 'create-event.html')
+    if request.method == 'POST':
+        form = EventCreateForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('profile')
+
+    else:
+        form = EventCreateForm()
+
+    return render(request, 'create-event.html', {'form': form})

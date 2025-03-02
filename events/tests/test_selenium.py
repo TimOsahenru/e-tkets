@@ -27,6 +27,8 @@ def test_create_event_page(browser):
 
     event_name_input.send_keys('March 2025 event')
     event_description_input.send_keys('... some random descriptions for this event')
+    start_date_input.send_keys('2023-10-01 12:00:00')
+    end_date_input.send_keys('2023-10-01 14:00:00')
     location_input.send_keys('Ghana')
     location_tips_input.send_keys('Africa')
     call_for_direction_input.send_keys('123456')
@@ -35,5 +37,6 @@ def test_create_event_page(browser):
     is_free_input.send_keys('True')
     submit_button.click()
 
-    redirect_url = 'http://localhost:8000/profile'
+
+    redirect_url = 'http://localhost:8000/account/profile'
     assert browser.current_url == redirect_url, f"Expected to be redirected to {redirect_url} but got redirected here {browser.current_url}"

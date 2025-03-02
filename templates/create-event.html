@@ -6,17 +6,9 @@
   <title>e-tkets Create Event</title>
 </head>
 <body>
-  <form method="POST" action="/profile">
-    <input name="name" >
-    <textarea name="description"></textarea>
-    <input name="start_date" >
-    <input name="end_date" >
-    <input name="location" >
-    <input name="location_tips" >
-    <input name="call_for_direction" >
-    <input name="country" > 
-    <input name="event_type" >
-    <input name="is_free" >
+  <form method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
     <button name="submit">create</button>
   </form>
 </body>
