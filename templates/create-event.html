@@ -7,7 +7,7 @@
     <meta name="keywords" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Manup | Template</title>
+    <title>e-tkets Create Event</title>
     <!-- Google Font -->
     <link
       href="https://fonts.googleapis.com/css?family=Work+Sans:400,500,600,700,800,900&display=swap"
@@ -98,97 +98,95 @@
     </header>
     <!-- Header End -->
 
-    <!-- Contact Form Section Begin -->
-    <section class="contact-from-section spad">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="section-title">
-              <h2>Create your events</h2>
-              <p>Fill out the form below to create your events.</p>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-lg-12">
-            <form class="comment-form contact-form" method="POST">
-              {% csrf_token %}
-              <div class="row">
-                <!-- Event Name -->
-                
-                  <!-- Event Name (no label, placeholder only) -->
-  <div class="col-lg-4">
-    <input type="text" name="{{ form.name.name }}" id="{{ form.name.id_for_label }}" placeholder="Event Name" required>
-  </div>
-
-  <!-- Event Description (no label, placeholder only) -->
-  <div class="col-lg-12 text-center">
-    <textarea name="{{ form.description.name }}" id="{{ form.description.id_for_label }}" placeholder="Event Description" required></textarea>
-  </div>
-
-  <!-- Location (no label, placeholder only) -->
-  <div class="col-lg-4">
-    <input type="text" name="{{ form.location.name }}" id="{{ form.location.id_for_label }}" placeholder="Event Location" required>
-  </div>
-
-  <!-- Location Tips (no label, placeholder only) -->
-  <div class="col-lg-4">
-    <input type="text" name="{{ form.location_tips.name }}" id="{{ form.location_tips.id_for_label }}" placeholder="Location Tips" required>
-  </div>
-
-  <!-- Call for Direction (no label, placeholder only) -->
-  <div class="col-lg-4">
-    <input type="text" name="{{ form.call_for_direction.name }}" id="{{ form.call_for_direction.id_for_label }}" placeholder="Call for Direction" required>
-  </div>
-
-  <!-- Start Date (keep label) -->
-  <div class="col-lg-4">
-    {{ form.start_date.label_tag }}
-    <input type="datetime-local" name="{{ form.start_date.name }}" id="{{ form.start_date.id_for_label }}" required>
-  </div>
-
-  <!-- End Date (keep label) -->
-  <div class="col-lg-4">
-    {{ form.end_date.label_tag }}
-    <input type="datetime-local" name="{{ form.end_date.name }}" id="{{ form.end_date.id_for_label }}" required>
-  </div>
-
-  <!-- Country Dropdown (keep label) -->
-  <div class="col-lg-4">
-    {{ form.country.label_tag }}
-    <select name="{{ form.country.name }}" id="{{ form.country.id_for_label }}" class="styled-dropdown">
-      {% for value, label in form.country.field.choices %}
-        <option value="{{ value }}">{{ label }}</option>
-      {% endfor %}
-    </select>
-  </div>
-
-  <!-- Event Type Dropdown (keep label) -->
-  <div class="col-lg-4">
-    {{ form.event_type.label_tag }}
-    <select name="{{ form.event_type.name }}" id="{{ form.event_type.id_for_label }}" class="styled-dropdown">
-      {% for value, label in form.event_type.field.choices %}
-        <option value="{{ value }}">{{ label }}</option>
-      {% endfor %}
-    </select>
-  </div>
-
-  <!-- Is Free Checkbox (custom styling) -->
-  <div class="col-lg-4 checkbox-container">
-    <label for="{{ form.is_free.id_for_label }}" class="checkbox-label">
-      <input type="checkbox" name="{{ form.is_free.name }}" id="{{ form.is_free.id_for_label }}" checked >
-      <span class="checkmark"></span>
-      Is the event free?
-    </label>
-  </div>
-              </div>
-              <!-- Submit Button -->
-              <button type="submit" class="site-btn">Create event</button>
-            </form>
-          </div>
+   <!-- Contact Form Section Begin -->
+<section class="contact-from-section spad">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="section-title">
+          <h2>Create your events</h2>
+          <p>Fill out the form below to create your events.</p>
         </div>
       </div>
-    </section>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <form class="comment-form contact-form" method="POST">
+          {% csrf_token %}
+          <div class="row">
+            <!-- Event Name -->
+            <div class="col-lg-4">
+              <input type="text" name="{{ form.name.name }}" id="{{ form.name.id_for_label }}" placeholder="Event Name" required>
+            </div>
+
+            <!-- Event Description -->
+            <div class="col-lg-12 text-center">
+              <textarea name="{{ form.description.name }}" id="{{ form.description.id_for_label }}" placeholder="Event Description" required></textarea>
+            </div>
+
+            <!-- Location -->
+            <div class="col-lg-4">
+              <input type="text" name="{{ form.location.name }}" id="{{ form.location.id_for_label }}" placeholder="Event Location" required>
+            </div>
+
+            <!-- Location Tips -->
+            <div class="col-lg-4">
+              <input type="text" name="{{ form.location_tips.name }}" id="{{ form.location_tips.id_for_label }}" placeholder="Location Tips" required>
+            </div>
+
+            <!-- Call for Direction -->
+            <div class="col-lg-4">
+              <input type="text" name="{{ form.call_for_direction.name }}" id="{{ form.call_for_direction.id_for_label }}" placeholder="Call for Direction" required>
+            </div>
+
+            <!-- Start Date -->
+            <div class="col-lg-4">
+              {{ form.start_date.label_tag }}
+              <input type="datetime-local" name="{{ form.start_date.name }}" id="{{ form.start_date.id_for_label }}" required>
+            </div>
+
+            <!-- End Date -->
+            <div class="col-lg-4">
+              {{ form.end_date.label_tag }}
+              <input type="datetime-local" name="{{ form.end_date.name }}" id="{{ form.end_date.id_for_label }}" required>
+            </div>
+
+            <!-- Country Dropdown -->
+            <div class="col-lg-4">
+              {{ form.country.label_tag }}
+              <select name="{{ form.country.name }}" id="{{ form.country.id_for_label }}" class="styled-dropdown">
+                {% for value, label in form.country.field.choices %}
+                  <option value="{{ value }}">{{ label }}</option>
+                {% endfor %}
+              </select>
+            </div>
+
+            <!-- Event Type Dropdown -->
+            <div class="col-lg-4">
+              {{ form.event_type.label_tag }}
+              <select name="{{ form.event_type.name }}" id="{{ form.event_type.id_for_label }}" class="styled-dropdown">
+                {% for value, label in form.event_type.field.choices %}
+                  <option value="{{ value }}">{{ label }}</option>
+                {% endfor %}
+              </select>
+            </div>
+
+            <!-- Is Free Checkbox -->
+            <div class="col-lg-4 checkbox-container">
+              <label for="{{ form.is_free.id_for_label }}" class="checkbox-label">
+                <input type="checkbox" name="{{ form.is_free.name }}" id="{{ form.is_free.id_for_label }}" checked>
+                <span class="checkmark"></span>
+                Is the event free?
+              </label>
+            </div>
+          </div>
+          <!-- Submit Button -->
+          <button type="submit" id="submit" class="site-btn">Create event</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
 
     <!-- Contact Form Section End -->
 
@@ -270,12 +268,12 @@
     <!-- Footer Section End -->
 
     <!-- Js Plugins -->
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.magnific-popup.min.js"></script>
-    <script src="js/jquery.countdown.min.js"></script>
-    <script src="js/jquery.slicknav.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/main.js"></script>
+    <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+    <script src="{% static 'js/jquery.countdown.min.js' %}"></script>
+    <script src="{% static 'js/jquery.slicknav.js' %}"></script>
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
   </body>
 </html>
