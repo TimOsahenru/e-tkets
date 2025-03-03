@@ -39,7 +39,11 @@ def test_create_event_page(browser):
         is_free_input.click()
 
     submit_button.click()
-  
+    
+    # apprantly there's no significantly easy to mock datetime date in selenium
+    # when using datetime-local in an inpute field, so I have to sleep the process
+    # for 10 seconds so the fields can be manually inputted
+        
     time.sleep(10)
     redirect_url = 'http://localhost:8000/account/profile'
     assert browser.current_url == redirect_url, f"Expected to be redirected to {redirect_url} but got redirected here {browser.current_url}"
