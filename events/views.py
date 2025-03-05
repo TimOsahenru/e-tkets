@@ -4,6 +4,10 @@ from events.forms import EventCreateForm
 from django.urls import reverse
 
 
+def home_page(request):
+    return render(request, 'index.html')
+
+
 def create_event(request):
     if request.method == 'POST':
         form = EventCreateForm(request.POST)

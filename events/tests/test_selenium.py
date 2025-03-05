@@ -5,6 +5,70 @@ from selenium.webdriver.common.by import By
 
 
 
+def test_home_page(browser):
+    browser.get('http://localhost:8000/')
+
+    header_section = browser.find_element(By.TAG_NAME, 'title')
+    header_title = header_section.get_attribute('textContent')
+    assert header_title == 'e-tkets Home Page'
+
+    hero_section = browser.find_element(By.CSS_SELECTOR, 'div.hero-text span')
+    hero_title = hero_section.get_attribute('textContent')
+    assert hero_title == 'Your next great experience is just a click away.'
+
+    hero_section = browser.find_element(By.CSS_SELECTOR, 'div.hero-text h2')
+    hero_title = hero_section.get_attribute('textContent').strip()
+    assert hero_title == 'Bringing you closer to all the events you love'
+
+    hero_section = browser.find_element(By.CSS_SELECTOR, 'div.hero-text a')
+    button_name = hero_section.get_attribute('textContent')
+    assert button_name == 'Create events'
+
+    nav_links = browser.find_elements(By.CSS_SELECTOR, 'nav.mainmenu ul li a')
+
+    expected_links = [
+        {"text": "Home", "href": "/"},
+        {"text": "About", "href": "#"},
+        {"text": "Create", "href": "#"},
+        {"text": "Discover events", "href": "#"},
+        {"text": "Contacts", "href": "/"}
+    ]
+
+    assert len(nav_links) == len(expected_links)
+
+    about_section = browser.find_element(By.CSS_SELECTOR, 'div.ha-text h2')
+    about_section_title = about_section.get_attribute('textContent')
+    assert about_section_title == 'About e-tkets'
+
+    event_section = browser.find_element(By.CSS_SELECTOR, 'div.section-title h2')
+    event_section_title = event_section.get_attribute('textContent')
+    assert event_section_title == 'Recent Events'
+
+    events = browser.find_elements(By.CSS_SELECTOR, 'div.container .li-tag')
+    assert len(events) == 3
+
+    price_section = browser.find_element(By.CSS_SELECTOR, 'section.pricing-section h2')
+    price_section_title = price_section.get_attribute('textContent')
+    assert price_section_title == 'Ticket Pricing'
+
+    prices = browser.find_elements(By.CSS_SELECTOR, 'section.pricing-section .price-item')
+    assert len(prices) == 3
+
+
+    # test for title [x]
+    # test 'Your next great ...' [x]
+    # test_links availabe in the nav [x]
+    # create events button [x]
+    # test latest events has 3 events [x]
+    # test price tickets has 3 block [x]
+    # test location title in home page [x]
+    # test template used [x]
+    # test for hero image
+    # test about image
+
+
+
+
 @pytest.mark.django_db
 def test_create_event_page(browser):
     browser.get('http://localhost:8000/' + reverse('create_event'))
