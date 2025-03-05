@@ -47,14 +47,22 @@ def test_home_page(browser):
     events = browser.find_elements(By.CSS_SELECTOR, 'div.container .li-tag')
     assert len(events) == 3
 
+    price_section = browser.find_element(By.CSS_SELECTOR, 'section.pricing-section h2')
+    price_section_title = price_section.get_attribute('textContent')
+    assert price_section_title == 'Ticket Pricing'
+
+    prices = browser.find_elements(By.CSS_SELECTOR, 'section.pricing-section .price-item')
+    assert len(prices) == 3
+
+
     # test for title [x]
     # test 'Your next great ...' [x]
     # test_links availabe in the nav [x]
     # create events button [x]
-    # test latest events has 3 events
-    # test price tickets has 3 block
-    # test location title in home page
-    # test template used
+    # test latest events has 3 events [x]
+    # test price tickets has 3 block [x]
+    # test location title in home page [x]
+    # test template used [x]
     # test for hero image
     # test about image
 
