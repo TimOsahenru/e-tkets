@@ -5,6 +5,24 @@ from selenium.webdriver.common.by import By
 
 
 
+def test_home_page(browser):
+    browser.get('http://localhost:8000/')
+
+    header = browser.find_element(By.TAG_NAME, 'title')
+    header_title = header.get_attribute('textContent')
+    assert header_title == 'e-tkets Home Page'
+
+    # test for title
+    # test_links availabe in the nav
+    # create events button
+    # test latest events has 3 events
+    # test price tickets has 3 block
+    # test location title in home page
+    # test template used
+
+
+
+
 @pytest.mark.django_db
 def test_create_event_page(browser):
     browser.get('http://localhost:8000/' + reverse('create_event'))
