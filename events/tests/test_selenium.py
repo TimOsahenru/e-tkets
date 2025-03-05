@@ -37,9 +37,14 @@ def test_home_page(browser):
 
     assert len(nav_links) == len(expected_links)
 
-    about_header = browser.find_element(By.CSS_SELECTOR, 'div.ha-text h2')
-    about_header_title = about_header.get_attribute('textContent')
-    assert about_header_title == 'About e-tkets'
+    about_section = browser.find_element(By.CSS_SELECTOR, 'div.ha-text h2')
+    about_section_title = about_section.get_attribute('textContent')
+    assert about_section_title == 'About e-tkets'
+
+    event_section = browser.find_element(By.CSS_SELECTOR, 'div.section-title h2')
+    event_section_title = event_section.get_attribute('textContent')
+    assert event_section_title == 'Recent Events'
+
 
     # test for title [x]
     # test 'Your next great ...' [x]
