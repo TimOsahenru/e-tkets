@@ -8,17 +8,49 @@ from selenium.webdriver.common.by import By
 def test_home_page(browser):
     browser.get('http://localhost:8000/')
 
-    header = browser.find_element(By.TAG_NAME, 'title')
-    header_title = header.get_attribute('textContent')
+    header_section = browser.find_element(By.TAG_NAME, 'title')
+    header_title = header_section.get_attribute('textContent')
     assert header_title == 'e-tkets Home Page'
 
-    # test for title
-    # test_links availabe in the nav
-    # create events button
+    hero_section = browser.find_element(By.CSS_SELECTOR, 'div.hero-text span')
+    hero_title = hero_section.get_attribute('textContent')
+    assert hero_title == 'Your next great experience is just a click away.'
+
+    hero_section = browser.find_element(By.CSS_SELECTOR, 'div.hero-text h2')
+    hero_title = hero_section.get_attribute('textContent').strip()
+    assert hero_title == 'Bringing you closer to all the events you love'
+
+    hero_section = browser.find_element(By.CSS_SELECTOR, 'div.hero-text a')
+    button_name = hero_section.get_attribute('textContent')
+    assert button_name == 'Create events'
+
+    nav_links = browser.find_elements(By.CSS_SELECTOR, 'nav.mainmenu ul li a')
+    print('nav links', nav_links)
+
+    expected_links = [
+        {"text": "Home", "href": "/"},
+        {"text": "About", "href": "#"},
+        {"text": "Create", "href": "#"},
+        {"text": "Discover events", "href": "#"},
+        {"text": "Contacts", "href": "/"}
+    ]
+
+    assert len(nav_links) == len(expected_links)
+
+    about_header = browser.find_element(By.CSS_SELECTOR, 'div.ha-text h2')
+    about_header_title = about_header.get_attribute('textContent')
+    assert about_header_title == 'About e-tkets'
+
+    # test for title [x]
+    # test 'Your next great ...' [x]
+    # test_links availabe in the nav [x]
+    # create events button [x]
     # test latest events has 3 events
     # test price tickets has 3 block
     # test location title in home page
     # test template used
+    # test for hero image
+    # test about image
 
 
 
