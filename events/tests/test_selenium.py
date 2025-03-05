@@ -55,20 +55,6 @@ def test_home_page(browser):
     assert len(prices) == 3
 
 
-    # test for title [x]
-    # test 'Your next great ...' [x]
-    # test_links availabe in the nav [x]
-    # create events button [x]
-    # test latest events has 3 events [x]
-    # test price tickets has 3 block [x]
-    # test location title in home page [x]
-    # test template used [x]
-    # test for hero image
-    # test about image
-
-
-
-
 @pytest.mark.django_db
 def test_create_event_page(browser):
     browser.get('http://localhost:8000/' + reverse('create_event'))
