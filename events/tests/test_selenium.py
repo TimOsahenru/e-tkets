@@ -25,7 +25,6 @@ def test_home_page(browser):
     assert button_name == 'Create events'
 
     nav_links = browser.find_elements(By.CSS_SELECTOR, 'nav.mainmenu ul li a')
-    print('nav links', nav_links)
 
     expected_links = [
         {"text": "Home", "href": "/"},
@@ -45,6 +44,8 @@ def test_home_page(browser):
     event_section_title = event_section.get_attribute('textContent')
     assert event_section_title == 'Recent Events'
 
+    events = browser.find_elements(By.CSS_SELECTOR, 'div.container .li-tag')
+    assert len(events) == 3
 
     # test for title [x]
     # test 'Your next great ...' [x]
