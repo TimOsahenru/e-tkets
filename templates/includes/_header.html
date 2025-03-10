@@ -16,9 +16,14 @@
             <li><a href="#">Contacts</a></li>
           </ul>
         </nav>
-        <a href="#" class="primary-btn top-btn"
-          ><i class="fa fa-user"></i> Sign Up</a
-        >
+        {% if request.user.is_authenticated %}
+        <form action="{% url 'logout' %}" method="post">
+          {% csrf_token %}
+          <button class="primary-btn top-btn" type="submit">Log out</button>
+        </form>
+        {% else %}
+        <a href="{% url 'login' %}" class="primary-btn top-btn"><i class="fa fa-user"></i>Login</a>
+        {% endif %}
       </div>
       <div id="mobile-menu-wrap"></div>
     </div>
