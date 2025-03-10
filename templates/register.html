@@ -1,16 +1,70 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h2>Register here</h2>
-    <form method="POST">
-        {% csrf_token %}
-        {{user_form.as_p}}
-        <button type="submit">register</button>
-    </form>
-</body>
-</html>
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{{block.super}} Login Page{% endblock %}
+{% block content %}
+{% load static %}
+<header class="header-section">
+  <div class="container">
+    <div class="logo">
+      <a href="/">
+        <img src="{% static 'img/logo.png' %}" alt="">
+      </a>
+    </div>
+    <div id="mobile-menu-wrap"></div>
+  </div>
+</header>
+<!-- Login Section Begin -->
+<section class="login-section spad">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <div class="login-form">
+                    <div class="section-title text-center">
+                        <h2>Sign Up</h2>
+                        <p>Create a new account to get started. It's quick and easy!</p>
+                    </div>
+                    <form method="POST" class="form">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="username">Username</label>
+                            <input type="text" name="{{ user_form.username.name }}" id="{{ user_form.username.id_for_label }}" 
+                            placeholder="Enter your username" class="form-control">                 
+                        </div>
+                        <div class="form-group">
+                            <label for="firstname">First name</label>
+                            <input type="text" name="{{ user_form.first_name.name }}" id="{{ user_form.first_name.id_for_label }}" 
+                            placeholder="Enter your first name" class="form-control">                
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" name="{{ user_form.email.name }}" id="{{ user_form.email.id_for_label }}" 
+           placeholder="Enter your email" class="form-control">                
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            
+    <input type="password" name="{{ user_form.password.name }}" id="{{ user_form.password.id_for_label }}" 
+    placeholder="Enter your password" class="form-control">                
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Confirm password</label>
+                            
+
+                            <input type="password" name="{{ user_form.password2.name }}" id="{{ user_form.password2.id_for_label }}" 
+                            placeholder="Confirm your password" class="form-control">               
+                        </div>
+                        <div class="form-group text-center">
+                            <button type="submit" class="btn btn-primary btn-block">SignUp</button>
+                        </div>
+                        <div class="text-center">
+                            <p>Already have an account? <a href="#" class="forgot-password">Login here</a></p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Login Section End -->
+ {% include 'includes/_footer.html' %}
+ {% endblock %}
