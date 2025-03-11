@@ -16,7 +16,6 @@ class UserRegisterationForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ['username', 'email']
-        # fields = ['username', 'first_name', 'email']
 
 
     def clean_password2(self):

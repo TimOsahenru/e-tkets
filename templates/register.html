@@ -13,7 +13,7 @@
     <div id="mobile-menu-wrap"></div>
   </div>
 </header>
-<!-- Login Section Begin -->
+<!-- SignUp Section Begin -->
 <section class="login-section spad">
     <div class="container">
         <div class="row justify-content-center">
@@ -29,11 +29,6 @@
                             <label for="username">Username</label>
                             <input type="text" name="{{ user_form.username.name }}" id="{{ user_form.username.id_for_label }}" 
                             placeholder="Enter your username" class="form-control">                 
-                        </div>
-                        <div class="form-group">
-                            <label for="firstname">First name</label>
-                            <input type="text" name="{{ user_form.first_name.name }}" id="{{ user_form.first_name.id_for_label }}" 
-                            placeholder="Enter your first name" class="form-control">                
                         </div>
                         <div class="form-group">
                             <label for="email">Email</label>
@@ -57,7 +52,7 @@
                             <button type="submit" class="btn btn-primary btn-block">SignUp</button>
                         </div>
                         <div class="text-center">
-                            <p>Already have an account? <a href="#" class="forgot-password">Login here</a></p>
+                            <p>Already have an account? <a href="{% url 'login' %}" class="forgot-password">Login here</a></p>
                         </div>
                     </form>
                 </div>
@@ -65,6 +60,6 @@
         </div>
     </div>
 </section>
-<!-- Login Section End -->
+<!-- SignUp Section End -->
  {% include 'includes/_footer.html' %}
  {% endblock %}
