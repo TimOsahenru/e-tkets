@@ -15,7 +15,12 @@ def profile(request):
 #         form = LoginForm(request.POST)
 #         if form.is_valid():
 #             cd = form.cleaned_data
-#             user = authenticate(request, username=cd['username'], password=cd['password'])
+#             user = authenticate(
+#                 request,
+#                 email=cd['email'],
+#                 password=cd['password'],
+#                 backend='accounts.authentication.EmailAuthBackend'  # Specify your backend
+#             )
 
 #             if user is not None:
 #                 if user.is_active:

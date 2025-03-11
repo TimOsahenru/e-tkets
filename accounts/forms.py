@@ -4,7 +4,8 @@ from django import forms
 # Test clean_password2
 
 class LoginForm(forms.Form):
-    username = forms.CharField()
+    # username = forms.CharField()    
+    email = forms.EmailField()
     password = forms.CharField(widget=forms.PasswordInput)
 
 
@@ -14,7 +15,8 @@ class UserRegisterationForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ['username', 'first_name', 'email']
+        fields = ['username', 'email']
+        # fields = ['username', 'first_name', 'email']
 
 
     def clean_password2(self):
@@ -22,3 +24,10 @@ class UserRegisterationForm(forms.ModelForm):
         if cd['password'] != cd ['password2']:
             raise forms.ValidationError('Passwords don\'t match.')
         return cd['password2']
+    
+
+    def clean_email(self):
+        data = self.cleaned_data['email']
+        if User.objects.filter(email=data).exists():
+            raise forms.ValidationError('Email already in use')
+        return data
