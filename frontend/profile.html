@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Profile Page">
+    <meta name="keywords" content="Profile, User, Events">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>User Profile</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans:400,500,600,700,800,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap" rel="stylesheet">
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
+    <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <style>
+        /* Profile Page Specific Styles */
+        .profile-section {
+            padding: 60px 0;
+        }
+
+        .profile-nav {
+            background: #ffffff;
+            padding: 10px 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .profile-nav .nav-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .profile-nav .nav-links a {
+            padding: 10px 15px;
+            font-size: 16px;
+            color: #171822;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .profile-nav .nav-links a:hover {
+            background: linear-gradient(120deg, #ee8425, #f9488b);
+            color: #ffffff;
+        }
+
+        .profile-nav .nav-links a i {
+            margin-right: 10px;
+        }
+
+        .profile-nav .logout-btn {
+            padding: 10px 15px;
+            font-size: 16px;
+            background: #f44949;
+            color: #ffffff;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .profile-nav .logout-btn:hover {
+            background: #d43f3f;
+        }
+
+        .profile-content {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .profile-content h2 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #171822;
+        }
+
+        .create-event-btn {
+            text-align: right;
+            margin-bottom: 20px;
+        }
+
+        .create-event-btn .primary-btn {
+            padding: 10px 20px;
+            font-size: 14px;
+        }
+
+        .event-list {
+            display: grid;
+            gap: 20px;
+        }
+
+        .event-item {
+            display: flex;
+            align-items: center;
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .event-item .ei-pic {
+            flex: 0 0 100px;
+            margin-right: 20px;
+        }
+
+        .event-item .ei-pic img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .event-item .ei-text {
+            flex: 1;
+        }
+
+        .event-item .ei-text h4 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #171822;
+        }
+
+        .event-item .ei-text p {
+            font-size: 14px;
+            color: #6a6b7c;
+            margin-bottom: 5px;
+        }
+
+        .event-item .ei-text p strong {
+            color: #171822;
+        }
+
+        .event-item .ei-text a {
+            color: #f44949;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .event-item .ei-text a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 767px) {
+            .profile-nav {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .profile-nav .nav-links {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .profile-nav .nav-links a {
+                width: 100%;
+                text-align: left;
+            }
+
+            .profile-nav .logout-btn {
+                width: 100%;
+                text-align: center;
+                margin-top: 10px;
+            }
+
+            .event-item {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .event-item .ei-pic {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+
+            .create-event-btn {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Header Section Begin -->
+    <header class="header-section header-normal">
+        <div class="container">
+            <div class="logo">
+                <a href="./index.html">
+                    <img src="img/logo.png" alt="">
+                </a>
+            </div>
+            <div class="nav-menu">
+                <nav class="mainmenu mobile-menu">
+                    <ul>
+                        <li><a href="./index.html">Home</a></li>
+                        <li class="active"><a href="./profile.html">Profile</a></li>
+                        <li><a href="./speaker.html">Speakers</a>
+                            <ul class="dropdown">
+                                <li><a href="#">Jayden</a></li>
+                                <li><a href="#">Sara</a></li>
+                                <li><a href="#">Emma</a></li>
+                                <li><a href="#">Harriet</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="./schedule.html">Schedule</a></li>
+                        <li><a href="./blog.html">Blog</a></li>
+                        <li><a href="./contact.html">Contacts</a></li>
+                    </ul>
+                </nav>
+                <a href="#" class="primary-btn top-btn"><i class="fa fa-ticket"></i> Ticket</a>
+            </div>
+            <div id="mobile-menu-wrap"></div>
+        </div>
+    </header>
+    <!-- Header End -->
+
+    <!-- Breadcrumb Section Begin -->
+    <section class="breadcrumb-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb-text">
+                        <h2>Profile</h2>
+                        <div class="bt-option">
+                            <a href="./index.html">Home</a>
+                            <span>Profile</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Breadcrumb Section End -->
+
+    <!-- Profile Section Begin -->
+    <section class="profile-section spad">
+        <div class="container">
+            <!-- Mini Navigation Bar -->
+            <div class="profile-nav">
+                <div class="nav-links">
+                    <a href="#" class="active"><i class="fa fa-calendar"></i> Events</a>
+                    <a href="#"><i class="fa fa-user"></i> Account</a>
+                </div>
+                <a href="#" class="logout-btn"><i class="fa fa-sign-out"></i> Logout</a>
+            </div>
+
+            <!-- Profile Content -->
+            <div class="profile-content">
+                <div class="create-event-btn">
+                    <a href="#" class="primary-btn"><i class="fa fa-plus"></i> Create Event</a>
+                </div>
+                <h2>Your Events</h2>
+                <div class="event-list">
+                    <!-- Single Event -->
+                    <div class="event-item">
+                        <div class="ei-pic">
+                            <img src="img/event-1.jpg" alt="Event Image">
+                        </div>
+                        <div class="ei-text">
+                            <h4>Event Name 1</h4>
+                            <p><strong>Date:</strong> October 10, 2023</p>
+                            <p><strong>Time:</strong> 10:00 AM - 5:00 PM</p>
+                            <p><strong>URL:</strong> <a href="https://example.com/event1" target="_blank">https://example.com/event1</a></p>
+                        </div>
+                    </div>
+                    <!-- Single Event -->
+                    <div class="event-item">
+                        <div class="ei-pic">
+                            <img src="img/event-2.jpg" alt="Event Image">
+                        </div>
+                        <div class="ei-text">
+                            <h4>Event Name 2</h4>
+                            <p><strong>Date:</strong> November 15, 2023</p>
+                            <p><strong>Time:</strong> 12:00 PM - 6:00 PM</p>
+                            <p><strong>URL:</strong> <a href="https://example.com/event2" target="_blank">https://example.com/event2</a></p>
+                        </div>
+                    </div>
+                    <!-- Add more events as needed -->
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Profile Section End -->
+
+    <!-- Footer Section Begin -->
+    <footer class="footer-section">
+        <div class="container">
+            <div class="partner-logo owl-carousel">
+                <a href="#" class="pl-table">
+                    <div class="pl-tablecell">
+                        <img src="img/partner-logo/logo-1.png" alt="">
+                    </div>
+                </a>
+                <a href="#" class="pl-table">
+                    <div class="pl-tablecell">
+                        <img src="img/partner-logo/logo-2.png" alt="">
+                    </div>
+                </a>
+                <a href="#" class="pl-table">
+                    <div class="pl-tablecell">
+                        <img src="img/partner-logo/logo-3.png" alt="">
+                    </div>
+                </a>
+                <a href="#" class="pl-table">
+                    <div class="pl-tablecell">
+                        <img src="img/partner-logo/logo-4.png" alt="">
+                    </div>
+                </a>
+                <a href="#" class="pl-table">
+                    <div class="pl-tablecell">
+                        <img src="img/partner-logo/logo-5.png" alt="">
+                    </div>
+                </a>
+                <a href="#" class="pl-table">
+                    <div class="pl-tablecell">
+                        <img src="img/partner-logo/logo-6.png" alt="">
+                    </div>
+                </a>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="footer-text">
+                        <div class="ft-logo">
+                            <a href="#" class="footer-logo"><img src="img/footer-logo.png" alt=""></a>
+                        </div>
+                        <ul>
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">Speakers</a></li>
+                            <li><a href="#">Schedule</a></li>
+                            <li><a href="#">Blog</a></li>
+                            <li><a href="#">Contact</a></li>
+                        </ul>
+                        <div class="copyright-text"><p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p></div>
+                        <div class="ft-social">
+                            <a href="#"><i class="fa fa-facebook"></i></a>
+                            <a href="#"><i class="fa fa-twitter"></i></a>
+                            <a href="#"><i class="fa fa-linkedin"></i></a>
+                            <a href="#"><i class="fa fa-instagram"></i></a>
+                            <a href="#"><i class="fa fa-youtube-play"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer Section End -->
+
+    <!-- Js Plugins -->
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/jquery.countdown.min.js"></script>
+    <script src="js/jquery.slicknav.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
