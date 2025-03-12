@@ -25,22 +25,30 @@
         /* Profile Page Specific Styles */
         .profile-section {
             padding: 60px 0;
+            padding-top: 80px; /* Add padding to prevent content from being hidden behind the navbar */
+            margin-left: 250px; /* Add margin to prevent content overlap with the left navbar */
+            transition: margin-left 0.3s ease; /* Smooth transition for margin */
         }
 
         .profile-nav {
             background: #ffffff;
-            padding: 10px 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
+            position: fixed; /* Fix the navbar */
+            top: 0; /* Stick to the top */
+            left: 0; /* Align to the left */
+            width: 250px; /* Set a fixed width */
+            height: 100vh; /* Full height */
+            z-index: 999999; /* Ensure it stays on top */
+            padding: 20px; /* Add padding */
+            box-shadow: 4px 0 10px rgba(0, 0, 0, 0.1); /* Add shadow to the right side */
             display: flex;
-            justify-content: space-between;
-            align-items: center;
+            flex-direction: column; /* Stack items vertically */
+            justify-content: space-between; /* Space out nav links and logout button */
         }
 
         .profile-nav .nav-links {
             display: flex;
-            gap: 15px;
+            flex-direction: column; /* Stack nav links vertically */
+            gap: 10px; /* Add space between links */
         }
 
         .profile-nav .nav-links a {
@@ -57,10 +65,6 @@
             color: #ffffff;
         }
 
-        .profile-nav .nav-links a i {
-            margin-right: 10px;
-        }
-
         .profile-nav .logout-btn {
             padding: 10px 15px;
             font-size: 16px;
@@ -69,12 +73,22 @@
             border-radius: 5px;
             text-decoration: none;
             transition: all 0.3s ease;
+            text-align: center; /* Center the text */
+            margin-top: auto; /* Push the logout button to the bottom */
         }
 
         .profile-nav .logout-btn:hover {
             background: #d43f3f;
         }
 
+        /* Hamburger Menu Icon */
+        .profile-nav .menu-icon {
+            display: none; /* Hide by default */
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        /* Profile Content */
         .profile-content {
             background: #ffffff;
             padding: 20px;
@@ -99,167 +113,113 @@
             font-size: 14px;
         }
 
-        .event-list {
+        /* Grid Layout for Events */
+        .event-grid {
             display: grid;
-            gap: 20px;
+            grid-template-columns: repeat(3, 1fr); /* 3 cards per row */
+            gap: 20px; /* Space between cards */
         }
 
-        .event-item {
-            display: flex;
-            align-items: center;
-            background: #f9f9f9;
-            padding: 15px;
+        .event-card {
+            background: #ffffff;
             border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .event-item .ei-pic {
-            flex: 0 0 100px;
-            margin-right: 20px;
+        .event-card:hover {
+            transform: translateY(-5px); /* Lift the card on hover */
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
         }
 
-        .event-item .ei-pic img {
+        .event-card img {
             width: 100%;
-            border-radius: 10px;
+            height: 200px; /* Fixed height for images */
+            object-fit: cover; /* Ensure images cover the area */
         }
 
-        .event-item .ei-text {
-            flex: 1;
+        .event-card .card-content {
+            padding: 15px;
         }
 
-        .event-item .ei-text h4 {
+        .event-card h4 {
             font-size: 18px;
             font-weight: 600;
             margin-bottom: 10px;
             color: #171822;
         }
 
-        .event-item .ei-text p {
+        .event-card p {
             font-size: 14px;
             color: #6a6b7c;
             margin-bottom: 5px;
         }
 
-        .event-item .ei-text p strong {
+        .event-card p strong {
             color: #171822;
         }
 
-        .event-item .ei-text a {
+        .event-card a {
             color: #f44949;
             text-decoration: none;
             font-weight: 600;
         }
 
-        .event-item .ei-text a:hover {
+        .event-card a:hover {
             text-decoration: underline;
         }
 
         /* Responsive Design */
         @media (max-width: 767px) {
+            .profile-section {
+                margin-left: 0; /* Remove margin for mobile screens */
+            }
+
             .profile-nav {
-                flex-direction: column;
-                align-items: flex-start;
+                width: 100%; /* Full width for mobile screens */
+                height: auto; /* Auto height for mobile screens */
+                left: -100%; /* Hide the navbar off-screen by default */
+                transition: left 0.3s ease; /* Smooth transition for sliding effect */
             }
 
-            .profile-nav .nav-links {
-                flex-direction: column;
-                width: 100%;
+            .profile-nav.active {
+                left: 0; /* Slide the navbar into view */
             }
 
-            .profile-nav .nav-links a {
-                width: 100%;
-                text-align: left;
+            .profile-nav .menu-icon {
+                display: block; /* Show hamburger menu icon */
+                position: fixed; /* Fix the icon to the top-left */
+                top: 20px;
+                left: 20px;
+                z-index: 9999999; /* Ensure it stays on top */
             }
 
-            .profile-nav .logout-btn {
-                width: 100%;
-                text-align: center;
-                margin-top: 10px;
-            }
-
-            .event-item {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .event-item .ei-pic {
-                margin-right: 0;
-                margin-bottom: 15px;
-            }
-
-            .create-event-btn {
-                text-align: center;
+            /* Adjust grid layout for mobile screens */
+            .event-grid {
+                grid-template-columns: 1fr; /* 1 card per row on mobile */
             }
         }
     </style>
 </head>
 
 <body>
-    <!-- Page Preloder -->
-    <div id="preloder">
-        <div class="loader"></div>
-    </div>
-
-    <!-- Header Section Begin -->
-    <header class="header-section header-normal">
-        <div class="container">
-            <div class="logo">
-                <a href="./index.html">
-                    <img src="img/logo.png" alt="">
-                </a>
-            </div>
-            <div class="nav-menu">
-                <nav class="mainmenu mobile-menu">
-                    <ul>
-                        <li><a href="./index.html">Home</a></li>
-                        <li class="active"><a href="./profile.html">Profile</a></li>
-                        <li><a href="./speaker.html">Speakers</a>
-                            <ul class="dropdown">
-                                <li><a href="#">Jayden</a></li>
-                                <li><a href="#">Sara</a></li>
-                                <li><a href="#">Emma</a></li>
-                                <li><a href="#">Harriet</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="./schedule.html">Schedule</a></li>
-                        <li><a href="./blog.html">Blog</a></li>
-                        <li><a href="./contact.html">Contacts</a></li>
-                    </ul>
-                </nav>
-                <a href="#" class="primary-btn top-btn"><i class="fa fa-ticket"></i> Ticket</a>
-            </div>
-            <div id="mobile-menu-wrap"></div>
-        </div>
-    </header>
-    <!-- Header End -->
-
-    <!-- Breadcrumb Section Begin -->
-    <section class="breadcrumb-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="breadcrumb-text">
-                        <h2>Profile</h2>
-                        <div class="bt-option">
-                            <a href="./index.html">Home</a>
-                            <span>Profile</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Breadcrumb Section End -->
-
     <!-- Profile Section Begin -->
     <section class="profile-section spad">
         <div class="container">
             <!-- Mini Navigation Bar -->
             <div class="profile-nav">
+                <!-- Hamburger Menu Icon -->
+                <div class="menu-icon" onclick="toggleMenu()">☰</div>
+
+                <!-- Nav Links -->
                 <div class="nav-links">
-                    <a href="#" class="active"><i class="fa fa-calendar"></i> Events</a>
+                    <a href="#" class="active"><i class="fa fa-home"></i> Home</a> <!-- Added Home Link -->
+                    <a href="#"><i class="fa fa-calendar"></i> Events</a>
                     <a href="#"><i class="fa fa-user"></i> Account</a>
                 </div>
+
+                <!-- Logout Button -->
                 <a href="#" class="logout-btn"><i class="fa fa-sign-out"></i> Logout</a>
             </div>
 
@@ -269,102 +229,73 @@
                     <a href="#" class="primary-btn"><i class="fa fa-plus"></i> Create Event</a>
                 </div>
                 <h2>Your Events</h2>
-                <div class="event-list">
-                    <!-- Single Event -->
-                    <div class="event-item">
-                        <div class="ei-pic">
-                            <img src="img/event-1.jpg" alt="Event Image">
-                        </div>
-                        <div class="ei-text">
+                <div class="event-grid">
+                    <!-- Event Card 1 -->
+                    <div class="event-card">
+                        <img src="img/related-post/related-post-1.jpg" alt="Event Image">
+                        <div class="card-content">
                             <h4>Event Name 1</h4>
                             <p><strong>Date:</strong> October 10, 2023</p>
                             <p><strong>Time:</strong> 10:00 AM - 5:00 PM</p>
                             <p><strong>URL:</strong> <a href="https://example.com/event1" target="_blank">https://example.com/event1</a></p>
                         </div>
                     </div>
-                    <!-- Single Event -->
-                    <div class="event-item">
-                        <div class="ei-pic">
-                            <img src="img/event-2.jpg" alt="Event Image">
-                        </div>
-                        <div class="ei-text">
+                    <!-- Event Card 2 -->
+                    <div class="event-card">
+                        <img src="img/related-post/related-post-2.jpg" alt="Event Image">
+                        <div class="card-content">
                             <h4>Event Name 2</h4>
                             <p><strong>Date:</strong> November 15, 2023</p>
                             <p><strong>Time:</strong> 12:00 PM - 6:00 PM</p>
                             <p><strong>URL:</strong> <a href="https://example.com/event2" target="_blank">https://example.com/event2</a></p>
                         </div>
                     </div>
-                    <!-- Add more events as needed -->
+                    <!-- Event Card 3 -->
+                    <div class="event-card">
+                        <img src="img/related-post/related-post-3.jpg" alt="Event Image">
+                        <div class="card-content">
+                            <h4>Event Name 3</h4>
+                            <p><strong>Date:</strong> December 20, 2023</p>
+                            <p><strong>Time:</strong> 9:00 AM - 4:00 PM</p>
+                            <p><strong>URL:</strong> <a href="https://example.com/event3" target="_blank">https://example.com/event3</a></p>
+                        </div>
+                    </div>
+                    <!-- Add more event cards as needed -->
+                       <!-- Event Card 1 -->
+                    <div class="event-card">
+                        <img src="img/related-post/related-post-1.jpg" alt="Event Image">
+                        <div class="card-content">
+                            <h4>Event Name 1</h4>
+                            <p><strong>Date:</strong> October 10, 2023</p>
+                            <p><strong>Time:</strong> 10:00 AM - 5:00 PM</p>
+                            <p><strong>URL:</strong> <a href="https://example.com/event1" target="_blank">https://example.com/event1</a></p>
+                        </div>
+                    </div>
+                    <!-- Event Card 2 -->
+                    <div class="event-card">
+                        <img src="img/related-post/related-post-2.jpg" alt="Event Image">
+                        <div class="card-content">
+                            <h4>Event Name 2</h4>
+                            <p><strong>Date:</strong> November 15, 2023</p>
+                            <p><strong>Time:</strong> 12:00 PM - 6:00 PM</p>
+                            <p><strong>URL:</strong> <a href="https://example.com/event2" target="_blank">https://example.com/event2</a></p>
+                        </div>
+                    </div>
+                    <!-- Event Card 3 -->
+                    <div class="event-card">
+                        <img src="img/related-post/related-post-3.jpg" alt="Event Image">
+                        <div class="card-content">
+                            <h4>Event Name 3</h4>
+                            <p><strong>Date:</strong> December 20, 2023</p>
+                            <p><strong>Time:</strong> 9:00 AM - 4:00 PM</p>
+                            <p><strong>URL:</strong> <a href="https://example.com/event3" target="_blank">https://example.com/event3</a></p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
     <!-- Profile Section End -->
-
-    <!-- Footer Section Begin -->
-    <footer class="footer-section">
-        <div class="container">
-            <div class="partner-logo owl-carousel">
-                <a href="#" class="pl-table">
-                    <div class="pl-tablecell">
-                        <img src="img/partner-logo/logo-1.png" alt="">
-                    </div>
-                </a>
-                <a href="#" class="pl-table">
-                    <div class="pl-tablecell">
-                        <img src="img/partner-logo/logo-2.png" alt="">
-                    </div>
-                </a>
-                <a href="#" class="pl-table">
-                    <div class="pl-tablecell">
-                        <img src="img/partner-logo/logo-3.png" alt="">
-                    </div>
-                </a>
-                <a href="#" class="pl-table">
-                    <div class="pl-tablecell">
-                        <img src="img/partner-logo/logo-4.png" alt="">
-                    </div>
-                </a>
-                <a href="#" class="pl-table">
-                    <div class="pl-tablecell">
-                        <img src="img/partner-logo/logo-5.png" alt="">
-                    </div>
-                </a>
-                <a href="#" class="pl-table">
-                    <div class="pl-tablecell">
-                        <img src="img/partner-logo/logo-6.png" alt="">
-                    </div>
-                </a>
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="footer-text">
-                        <div class="ft-logo">
-                            <a href="#" class="footer-logo"><img src="img/footer-logo.png" alt=""></a>
-                        </div>
-                        <ul>
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#">Speakers</a></li>
-                            <li><a href="#">Schedule</a></li>
-                            <li><a href="#">Blog</a></li>
-                            <li><a href="#">Contact</a></li>
-                        </ul>
-                        <div class="copyright-text"><p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p></div>
-                        <div class="ft-social">
-                            <a href="#"><i class="fa fa-facebook"></i></a>
-                            <a href="#"><i class="fa fa-twitter"></i></a>
-                            <a href="#"><i class="fa fa-linkedin"></i></a>
-                            <a href="#"><i class="fa fa-instagram"></i></a>
-                            <a href="#"><i class="fa fa-youtube-play"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
-    <!-- Footer Section End -->
 
     <!-- Js Plugins -->
     <script src="js/jquery-3.3.1.min.js"></script>
@@ -374,6 +305,14 @@
     <script src="js/jquery.slicknav.js"></script>
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/main.js"></script>
+
+    <!-- Toggle Menu Script -->
+    <script>
+        function toggleMenu() {
+            const profileNav = document.querySelector('.profile-nav');
+            profileNav.classList.toggle('active');
+        }
+    </script>
 </body>
 
 </html>
