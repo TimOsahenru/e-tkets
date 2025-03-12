@@ -59,6 +59,14 @@ def test_home_page(browser):
 def test_create_event_page(browser):
     browser.get('http://localhost:8000/' + reverse('create_event'))
 
+    username_input = browser.find_element(By.ID, 'id_username')
+    password_input = browser.find_element(By.ID, 'id_password')
+    login_button = browser.find_element(By.ID, 'submit')
+
+    username_input.send_keys('osahenru')
+    password_input.send_keys('1234')
+    login_button.click()
+
     header = browser.find_element(By.TAG_NAME, 'title')
     header_title = header.get_attribute('textContent')
     assert header_title == 'e-tkets Create Event', f"Expected title to be 'e-tkets Create Event' but got {header_title}"
@@ -94,6 +102,6 @@ def test_create_event_page(browser):
     # when using datetime-local in an inpute field, so I have to sleep the process
     # for 10 seconds so the fields can be manually inputted
         
-    time.sleep(10)
+    time.sleep(15)
     redirect_url = 'http://localhost:8000/account/profile'
     assert browser.current_url == redirect_url, f"Expected to be redirected to {redirect_url} but got redirected here {browser.current_url}"
