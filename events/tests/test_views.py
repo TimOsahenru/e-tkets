@@ -11,13 +11,10 @@ class CreateEventViewTest(TestCase):
         self.user = get_user_model().objects.create_user(
             username='osahenru',
             password='1234',
-            # username='admin',
-            # password='admin'
         )
 
         self.client.login(username='osahenru', password='1234')
     def test_get_request_display_form(self):
-        # self.client.login(self.user)
 
         response = self.client.post(reverse('create_event'))
         
@@ -26,7 +23,6 @@ class CreateEventViewTest(TestCase):
 
 
     def test_create_event_page_redirects(self):
-        # self.client.login(self.user)
 
         data = {
             'name': 'March event',
