@@ -134,7 +134,7 @@ def test_user_not_in_db_can_login(browser):
     password_input = browser.find_element(By.ID, 'id_password')
     login_button = browser.find_element(By.ID, 'submit')
 
-    username_input.send_keys('admin')
+    username_input.send_keys('Useradmin')
     password_input.send_keys('admin')
     login_button.click()
 
