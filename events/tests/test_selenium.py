@@ -105,3 +105,37 @@ def test_create_event_page(browser):
     time.sleep(15)
     redirect_url = 'http://localhost:8000/account/profile'
     assert browser.current_url == redirect_url, f"Expected to be redirected to {redirect_url} but got redirected here {browser.current_url}"
+
+
+@pytest.mark.django_db
+def test_users_in_db_can_login(browser):
+    browser.get('http://localhost:8000/account/login/')
+    login_header = browser.find_element(By.TAG_NAME, 'h2')
+    login_header_title = login_header.get_attribute('textContent')
+    assert login_header_title == 'Login'
+
+    username_input = browser.find_element(By.ID, 'id_username')
+    password_input = browser.find_element(By.ID, 'id_password')
+    login_button = browser.find_element(By.ID, 'submit')
+
+    username_input.send_keys('osahenru')
+    password_input.send_keys('1234')
+    login_button.click()
+
+    redirect_urls = 'http://localhost:8000/account/profile'
+    assert browser.current_url == redirect_urls, f"Expected to be redirected to {redirect_urls} but got redirected here {browser.current_url}"
+
+
+def test_user_not_in_db_can_login(browser):
+    browser.get('http://localhost:8000/account/login/')
+
+
+    username_input = browser.find_element(By.ID, 'id_username')
+    password_input = browser.find_element(By.ID, 'id_password')
+    login_button = browser.find_element(By.ID, 'submit')
+
+    username_input.send_keys('admin')
+    password_input.send_keys('admin')
+
+    redirect_urls = 'http://localhost:8000/account/login/'
+    assert browser.current_url == redirect_urls
