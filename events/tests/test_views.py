@@ -2,14 +2,22 @@ from django.test import TestCase, Client
 from django.urls import reverse
 from events import views
 from events.models import Event
+from django.contrib.auth import get_user_model
 
 
 class CreateEventViewTest(TestCase):
     def setUp(self):
         self.client = Client()
+        self.user = get_user_model().objects.create_user(
+            username='osahenru',
+            password='1234',
+            # username='admin',
+            # password='admin'
+        )
 
-
+        self.client.login(username='osahenru', password='1234')
     def test_get_request_display_form(self):
+        # self.client.login(self.user)
 
         response = self.client.post(reverse('create_event'))
         
@@ -18,7 +26,8 @@ class CreateEventViewTest(TestCase):
 
 
     def test_create_event_page_redirects(self):
-        
+        # self.client.login(self.user)
+
         data = {
             'name': 'March event',
             'description': '... some random description',
