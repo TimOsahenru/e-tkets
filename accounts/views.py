@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from accounts.forms import LoginForm, UserRegisterationForm
 from django.urls import reverse
 from django.contrib.auth import login, authenticate
+from accounts.models import Profile
 
 
 def profile(request):
@@ -43,6 +44,7 @@ def register(request):
             
             new_user.set_password(user_form.cleaned_data['password'])
             new_user.save()
+            Profile.objects.create(user=new_user)
             return redirect ('profile')
             # return render(request, 'register_done_html', {'new_user': new_user})
         
