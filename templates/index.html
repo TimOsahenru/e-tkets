@@ -47,7 +47,24 @@
 .footer-logo-text:hover {
   color: #ee8425; /* Change color on hover */
 }
-      </style>
+
+/* Add this CSS to your stylesheet */
+.price-item {
+  height: 100%; /* Ensure all cards take full height */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.price-item ul {
+  flex-grow: 1;
+  margin-bottom: 20px; 
+}
+  </style>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
       <section class="hero-section set-bg" data-setbg="{% static 'img/banner-h.jpg' %}">
@@ -107,123 +124,129 @@
       </section>
       <!-- Home About Section End -->
   
-      <!-- latest event section begin -->
-      <section class="latest-event spad">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-12">
-              <div class="section-title">
-                <h2>Recent Events</h2>
-                <p>Do not miss anything topic about your event</p>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-lg-6">
-              <div
-                class="latest-item set-bg large-item"
-                data-setbg="{% static 'img/blog/latest-b/latest-1.jpg' %}"
-              >
-                <div class="li-tag">Marketing</div>
-                <div class="li-text">
-                  <h4>
-                    <a href="./blog-details.html">Improve You Business Cards And Enchan Your Sales</a>
-                  </h4>
-                  <span><i class="fa fa-clock-o"></i> 19th May, 2019</span>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-6">
-              <div
-                class="latest-item set-bg"
-                data-setbg="{% static 'img/blog/latest-b/latest-2.jpg' %}"
-              >
-                <div class="li-tag">Experience</div>
-                <div class="li-text">
-                  <h5>
-                    <a href="./blog-details.html"
-                      >All users on MySpace will know that there are millions of
-                      people out there.</a
-                    >
-                  </h5>
-                  <span><i class="fa fa-clock-o"></i> 19th May, 2019</span>
-                </div>
-              </div>
-              <div
-                class="latest-item set-bg"
-                data-setbg="{% static 'img/blog/latest-b/latest-3.jpg' %}"
-              >
-                <div class="li-tag">Marketing</div>
-                <div class="li-text">
-                  <h5>
-                    <a href="./blog-details.html"
-                      >A Pocket PC is a handheld computer, which features many of
-                      the same capabilities.</a
-                    >
-                  </h5>
-                  <span><i class="fa fa-clock-o"></i> 19th May, 2019</span>
-                </div>
-              </div>
-            </div>
+    <!-- latest event section begin -->
+<section class="latest-event spad">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="section-title">
+          <h2>Recent Events</h2>
+          <p>Explore our recent events to get inspired and learn how to make your next event a success. Our platform is designed to help you manage your events with ease.</p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-6">
+        <div
+          class="latest-item set-bg large-item"
+          data-setbg="{% static 'img/blog/latest-b/latest-1.jpg' %}"
+        >
+          <!-- <div class="li-tag">Marketing</div> -->
+          <div class="li-text">
+            <h4>
+              <a href="./blog-details.html">Improve You Business Cards And Enchan Your Sales</a>
+            </h4>
+            <span><i class="fa fa-clock-o"></i> 19th May, 2019</span>
           </div>
         </div>
-      </section>
-      <!-- latest event section end -->
+      </div>
+      <div class="col-lg-6">
+        <div
+          class="latest-item set-bg"
+          data-setbg="{% static 'img/blog/latest-b/latest-2.jpg' %}"
+        >
+          <!-- <div class="li-tag">Experience</div> -->
+          <div class="li-text">
+            <h5>
+              <a href="./blog-details.html"
+                >All users on MySpace will know that there are millions of
+                people out there.</a
+              >
+            </h5>
+            <span><i class="fa fa-clock-o"></i> 19th May, 2019</span>
+          </div>
+        </div>
+        <div
+          class="latest-item set-bg"
+          data-setbg="{% static 'img/blog/latest-b/latest-3.jpg' %}"
+        >
+          <!-- <div class="li-tag">Marketing</div> -->
+          <div class="li-text">
+            <h5>
+              <a href="./blog-details.html"
+                >A Pocket PC is a handheld computer, which features many of
+                the same capabilities.</a
+              >
+            </h5>
+            <span><i class="fa fa-clock-o"></i> 19th May, 2019</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- latest event section end -->
   
-      <!-- Pricing Section Begin -->
-      <section
-        class="pricing-section set-bg spad"
-        data-setbg="{% static 'img/pricing-bg.jpg' %}"
-      >
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-12">
-              <div class="section-title">
-                <h2>Ticket Pricing</h2>
-                <p>Get your event ticket plan</p>
-              </div>
-            </div>
-          </div>
-          <div class="row justify-content-center">
-            <div class="col-lg-4 col-md-8">
-              <div class="price-item">
-                <h4>Event types</h4>
-                <ul>
-                  <li>Unlimited free events</li>
-                  <li>Unlimited paid events</li>
-                  <li>Unlimited private (invite only) events</li>
-                  <li>Virtual Events</li>
-                  <li>Recurring events</li>
-                  <li>1:1 events</li>
-                </ul>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-8">
-              <div class="price-item">
-                <h4>Selling tickets</h4>
-                <ul>
-                  <li>No fee on free tickets</li>
-                  <li>5% + ₦100 fee per paid ticket</li>
-                  <li>Pass online ticket fees to attendeesg</li>
-                  <li>Ability to manage ticket inventory</li>
-                </ul>     
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-8">
-              <div class="price-item">
-                <h4>Customisation</h4>
-                <ul>
-                  <li>  Custom event page URL</li>
-                  <li>Unlimited custom fields on check out form</li>
-                  <li>Customisable order confirmation email</li>
-                  <li>4 event themes</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <!-- Pricing Section End -->
+    <!-- Pricing Section Begin -->
+<section
+class="pricing-section set-bg spad"
+data-setbg="{% static 'img/pricing-bg.jpg' %}"
+>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="section-title">
+        <h2>Ticket Pricing</h2>
+        <p>
+          Choose the perfect ticket plan for your event and take control of your event management. 
+          Whether you're hosting a small meetup or a large conference, our flexible pricing options 
+          cater to all your needs. From free events to paid tickets, virtual gatherings to private 
+          invite-only functions, we provide the tools to make your event a success. Explore our 
+          pricing plans below and find the best fit for your event goals.
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-lg-4 col-md-8">
+      <div class="price-item">
+        <h4>Event types</h4>
+        <ul>
+          <li>Unlimited free events</li>
+          <li>Unlimited paid events</li>
+          <li>Unlimited private (invite only) events</li>
+          <li>Virtual Events</li>
+          <li>Recurring events</li>
+          <li>1:1 events</li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-8">
+      <div class="price-item">
+        <h4>Selling tickets</h4>
+        <ul>
+          <li>No fee on free tickets</li>
+          <li>5% + ₦100 fee per paid ticket</li>
+          <li>Pass online ticket fees to attendees</li>
+          <li>Ability to manage ticket inventory</li>
+        </ul>     
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-8">
+      <div class="price-item">
+        <h4>Customisation</h4>
+        <ul>
+          <li>Custom event page URL</li>
+          <li>Unlimited custom fields on check out form</li>
+          <li>Customisable order confirmation email</li>
+          <li>4 event themes</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+<!-- Pricing Section End -->
   
       <!-- Contact Section Begin -->
       <section class="contact-section spad">
