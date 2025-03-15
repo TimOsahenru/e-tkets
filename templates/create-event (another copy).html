@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}{{ block.super }} Create Event{% endblock %}
+{% block title %}{{block.super}} Create Event{% endblock %}
 {% block content %}
 <style>
   /* Profile Page Specific Styles */
@@ -42,26 +42,21 @@
   }
   
   .profile-nav .nav-links a:hover {
-      background: #ee8425;
+      background:#ee8425;
       color: #ffffff;
   }
   
-  .profile-nav .nav-links a.active {
-    background: #ee8425;
-    color: #ffffff;
-}
-
-.profile-nav .logout-btn {
-        width: 100%;
-        margin-top: 10px;
-        padding: 10px;
-        font-size: 14px;
-        text-align: center;
-        background: #eb0606;
-        color: #ffffff; 
-        border-radius: 5px;
-        display: block; 
-    }
+  .profile-nav .logout-btn {
+      padding: 10px 15px;
+      font-size: 16px;
+      background: #eb0606;
+      color: #ffffff;
+      border-radius: 5px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      text-align: center;
+      margin-top: auto;
+  }
   
   .profile-nav .logout-btn:hover {
       background: #d43f3f;
@@ -82,16 +77,6 @@
       margin: 0 auto;
   }
   
-  /* Remove shadows from the form and its inner elements */
-  .login-form,
-  .form,
-  .event-card,
-  .form-group input,
-  .form-group textarea,
-  .form-group select {
-      box-shadow: none !important;
-  }
-  
   .profile-content h2 {
       font-size: 28px;
       font-weight: 700;
@@ -108,35 +93,26 @@
   }
   
   .form-group {
-      margin-bottom: 30px; /* Increased spacing */
+      margin-bottom: 20px;
   }
   
   .form-group label {
-      font-size: 18px; /* Increased font size */
+      font-size: 14px;
       font-weight: 600;
       color: #171822;
-      margin-bottom: 10px; /* Increased spacing */
+      margin-bottom: 8px;
       display: block;
   }
   
-  /* Increase input field size */
   .form-group input,
   .form-group textarea,
   .form-group select {
       width: 100%;
-      padding: 25px 30px; /* Significantly increased padding */
-      font-size: 20px; /* Significantly increased font size */
+      padding: 12px 15px;
+      font-size: 14px;
       border: 1px solid #ddd;
-      border-radius: 12px; /* Slightly larger border radius */
+      border-radius: 8px;
       transition: all 0.3s ease;
-      margin-bottom: 30px; /* Increased spacing */
-  }
-  
-  /* Style the select dropdown */
-  .form-group select {
-      appearance: none; /* Remove default arrow */
-      background: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23000000'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e") no-repeat right 20px center; /* Add custom arrow */
-      background-size: 16px;
   }
   
   .form-group input:focus,
@@ -149,45 +125,35 @@
   
   .form-group textarea {
       resize: vertical;
-      min-height: 250px; /* Significantly increased height */
+      min-height: 120px;
   }
   
-  /* Style the checkbox */
   .checkbox-label {
       display: flex;
       align-items: center;
-      font-size: 18px; /* Increased font size */
+      font-size: 14px;
       color: #171822;
-      margin-bottom: 20px; /* Increased spacing */
   }
   
-  .checkbox-label input[type="checkbox"] {
-      width: 24px; /* Increased size */
-      height: 24px; /* Increased size */
-      margin-right: 15px; /* Increased spacing */
-      cursor: pointer;
+  .checkbox-label input {
+      margin-right: 10px;
   }
   
-  
-  /* Increase button size */
   .btn-primary {
       background: #ee8425;
       color: #ffffff;
-      padding: 25px 30px;
-      font-size: 22px;
+      padding: 12px 20px;
+      font-size: 16px;
       border: none;
-      border-radius: 12px;
+      border-radius: 8px;
       cursor: pointer;
       transition: all 0.3s ease;
       width: 100%;
-      margin-top: 30px;
   }
   
-  /* .btn-primary:hover {
+  .btn-primary:hover {
       background: #f9488b;
-      transform: translateY(-2px);
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  } */
+  }
   
   /* Responsive Design */
   @media (max-width: 767px) {
@@ -206,11 +172,6 @@
           left: 0; 
       }
       
-      .profile-nav .nav-links a.active {
-    background: #ee8425;
-    color: #ffffff;
-}
-
       .profile-nav .menu-icon {
           display: block;
           position: fixed;
@@ -235,8 +196,8 @@
 
           <!-- Nav Links -->
           <div class="nav-links">
-              <a href="/"><i class="fa fa-home"></i> Home</a> 
-              <a href="{% url 'profile' %}" class="{% if active_page == 'create_event' %}active{% endif %}"><i class="fa fa-calendar"></i> Events</a>
+              <a href="/" class="active"><i class="fa fa-home"></i> Home</a> 
+              <a href="{% url 'profile' %}"><i class="fa fa-calendar"></i> Events</a>
               <a href="#"><i class="fa fa-user"></i> Account</a>
           </div>
 
@@ -253,10 +214,9 @@
               <div class="col-lg-8">
                   <div class="login-form">
                       <div class="section-title text-center">
-                          <h2>Create your next big event </h2>
-                          <p>Ready to create something amazing? Use this form to set up your event details, including the name, date, time, and ticket type (free or paid).</p>
+                          <h2>Create Event</h2>
+                          <p>Fill out the form below to create your event.</p>
                       </div>
-        
                       <form method="POST" class="form">
                           {% csrf_token %}
                           <div class="form-group">
@@ -311,12 +271,12 @@
                               </select>
                           </div>
                           <div class="form-group">
-                            <label for="{{ form.is_free.id_for_label }}" class="checkbox-label">
-                                <input type="checkbox" name="{{ form.is_free.name }}" id="{{ form.is_free.id_for_label }}" class="custom-checkbox" checked>
-                                <span class="checkmark"></span>
-                                <i class="fa fa-money"></i> Is the event free?
-                            </label>
-                        </div>
+                              <label for="is_free" class="checkbox-label">
+                                  <input type="checkbox" name="{{ form.is_free.name }}" id="{{ form.is_free.id_for_label }}" checked>
+                                  <span class="checkmark"></span>
+                                  <i class="fa fa-money"></i> Is the event free?
+                              </label>
+                          </div>
                           <div class="form-group text-center">
                               <button type="submit" id="submit" class="btn btn-primary">Create Event</button>
                           </div>

@@ -1,0 +1,231 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{{ block.super }} Delete Event{% endblock %}
+{% block content %}
+<style>
+  /* Profile Page Specific Styles */
+  .profile-section {
+      padding: 60px 0;
+      padding-top: 80px;
+      margin-left: 250px;
+      transition: margin-left 0.3s ease;
+  }
+  
+  .profile-nav {
+      background: #ffffff;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 250px; 
+      height: 100vh;
+      z-index: 999999;
+      padding: 20px;
+      box-shadow: 4px 0 10px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+  }
+  
+  .profile-nav .nav-links {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+  }
+  
+  .profile-nav .nav-links a {
+      padding: 10px 15px;
+      font-size: 16px;
+      color: #171822;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+  }
+  
+  .profile-nav .nav-links a:hover {
+      background: #ee8425;
+      color: #ffffff;
+  }
+
+.profile-nav .nav-links a.active {
+    background: #ee8425;
+    color: #ffffff;
+}
+  
+.profile-nav .logout-btn {
+        width: 100%;
+        margin-top: 10px;
+        padding: 10px;
+        font-size: 14px;
+        text-align: center;
+        background: #eb0606;
+        color: #ffffff; 
+        border-radius: 5px;
+        display: block; 
+    }
+  
+  .profile-nav .logout-btn:hover {
+      background: #d43f3f;
+  }
+  
+  .profile-nav .menu-icon {
+      display: none;
+      font-size: 24px;
+      cursor: pointer;
+  }
+  
+  .profile-content {
+      background: #ffffff;
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      max-width: 800px;
+      margin: 0 auto;
+  }
+  
+  .profile-content h2 {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: #171822;
+      text-align: center;
+  }
+  
+  .profile-content p {
+      font-size: 16px;
+      color: #6a6b7c;
+      text-align: center;
+      margin-bottom: 30px;
+  }
+  
+  .button-container {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+  }
+  
+  .btn-confirm {
+      background: #eb0606;
+      color: #ffffff;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+  }
+  
+  .btn-confirm:hover {
+      background: #d43f3f;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .btn-cancel {
+      background: #6a6b7c;
+      color: #ffffff;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+  }
+  
+  .btn-cancel:hover {
+      background: #5a5b6c;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 767px) {
+      .profile-section {
+          margin-left: 0;
+      }
+      
+      .profile-nav {
+          width: 100%;
+          height: auto;
+          left: -100%;
+          transition: left 0.3s ease;
+      }
+      
+      .profile-nav.active {
+          left: 0; 
+      }
+
+      .profile-nav .nav-links a.active {
+    background: #ee8425;
+    color: #ffffff;
+}
+      
+      .profile-nav .menu-icon {
+          display: block;
+          position: fixed;
+          top: 20px;
+          left: 20px;
+          z-index: 9999999;
+      }
+      
+      .profile-content {
+          padding: 20px;
+      }
+  }
+</style>
+
+<!-- Profile Section Begin -->
+<section class="profile-section spad">
+  <div class="container">
+      <!-- Mini Navigation Bar -->
+      <div class="profile-nav">
+          <!-- Hamburger Menu Icon -->
+          <div class="menu-icon" onclick="toggleMenu()">☰</div>
+
+          <!-- Nav Links -->
+          <div class="nav-links">
+              <a href="/"><i class="fa fa-home"></i> Home</a> 
+              <a href="{% url 'profile' %}" class="{% if active_page == 'event_delete' %}active{% endif %}"><i class="fa fa-calendar"></i> Events</a>
+              <a href="#"><i class="fa fa-user"></i> Account</a>
+          </div>
+
+          <!-- Logout Button -->
+          <form method="POST" action="{% url 'logout' %}">
+              {% csrf_token %}
+              <button style="border: none;" type="submit" class="logout-btn"><i class="fa fa-sign-out"></i> Logout</button>
+          </form>
+      </div>
+      <!-- Profile Content -->
+      <div class="profile-content">
+          <!-- Delete Confirmation Section -->
+          <div class="row justify-content-center">
+              <div class="col-lg-8">
+                  <div class="login-form">
+                      <div class="section-title text-center">
+                          <h2>Delete {{ event.name }} Event</h2>
+                          <p>Are you sure you want to delete this event? This action cannot be undone.</p>
+                      </div>
+                      <div class="button-container">
+                          <form method="POST">
+                            {% csrf_token %}
+                              <button type="submit" class="btn-confirm">Confirm</button>
+                          </form>
+                          <!-- <a href="{% url 'delete_event' event.id %}" class="btn-confirm">Confirm</a> -->
+                          <a href="{% url 'edit_event' event.id %}" class="btn-cancel">Cancel</a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+<!-- Profile Section End -->
+
+{% include 'includes/_footer.html' %}
+<!-- Toggle Menu Script -->
+<script>
+  function toggleMenu() {
+      const profileNav = document.querySelector('.profile-nav');
+      profileNav.classList.toggle('active');
+  }
+</script>
+{% endblock %}

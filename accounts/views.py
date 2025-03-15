@@ -1,14 +1,24 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404, get_list_or_404
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from accounts.forms import LoginForm, UserRegisterationForm
 from django.urls import reverse
 from django.contrib.auth import login, authenticate
 from accounts.models import Profile
+from events.models import Event
 
 
+@login_required
 def profile(request):
-    return HttpResponse()
+    user_profile = get_object_or_404(Profile, user=request.user)
+    events = Event.objects.filter(event_creator=request.user)
+
+    context = {
+        'active_page': 'profile',
+        'user_profile': user_profile,
+        'events': events,
+    }
+    return render(request, 'profile.html', context)
 
 
 # def user_login(request):
@@ -44,8 +54,9 @@ def register(request):
             
             new_user.set_password(user_form.cleaned_data['password'])
             new_user.save()
-            Profile.objects.create(user=new_user)
-            return redirect ('profile')
+            Profile.objects.create(user=new_user) #unittest this
+            return redirect('login')
+            # return redirect ('profile')
             # return render(request, 'register_done_html', {'new_user': new_user})
         
     else:

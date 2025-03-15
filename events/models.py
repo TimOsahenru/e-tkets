@@ -1,5 +1,7 @@
 from django.db import models
+from django.contrib.auth import get_user_model
 
+User = get_user_model()
 
 class Event(models.Model):
 
@@ -29,7 +31,7 @@ class Event(models.Model):
         ('music', 'Music & Performance')
     )
     name = models.CharField(max_length=150)
-    # event_creator(PK) = 
+    event_creator = models.ForeignKey(User, related_name='events', on_delete=models.CASCADE)
     description = models.TextField()
     start_date = models.DateTimeField()
     end_date = models.DateTimeField()
@@ -47,3 +49,6 @@ class Event(models.Model):
 
 # if is_free == False
     # redirect to ticket page
+
+    def __str__(self):
+        return self.name

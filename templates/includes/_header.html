@@ -3,7 +3,8 @@
   <div class="container">
     <div class="logo">
       <a href="./index.html">
-        <img src="{% static 'img/logo.png' %}" alt="">
+        <!-- Text Logo -->
+        <span class="logo-text">e-tkets</span>
       </a>
     </div>
     <div class="nav-menu">
@@ -17,7 +18,10 @@
         </ul>
       </nav>
       {% if request.user.is_authenticated %}
-      <span></span>
+      <!-- Profile Icon -->
+      <a href="{% url 'profile' %}" class="primary-btn top-btn">
+        <i class="fas fa-user"></i> Profile
+      </a>
       {% else %}
       <a href="{% url 'login' %}" class="primary-btn top-btn">Login</a>
       {% endif %}
