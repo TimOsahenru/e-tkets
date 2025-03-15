@@ -64,6 +64,63 @@
   flex-grow: 1;
   margin-bottom: 20px; 
 }
+
+  .latest-item {
+    background-size: cover;
+    background-position: center;
+    height: 300px; /* Adjust height as needed */
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 20px; /* Add some spacing between items */
+  }
+
+  .latest-item .li-text {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+    color: white;
+    padding: 15px;
+  }
+
+  .latest-item .li-text h5 a {
+    color: white;
+    text-decoration: none;
+  }
+
+  .latest-item .li-text span {
+    font-size: 14px;
+    color: #ccc;
+  }
+
+  /* Paid/Free Label Styling */
+  .event-type {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #17a2b8; /* Default color for Free */
+    color: white;
+    padding: 5px 10px;
+    border-radius: 3px;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    z-index: 1; /* Ensure it's above the background image */
+    display: flex;
+    align-items: center;
+    gap: 5px; /* Space between icon and text */
+  }
+
+  .event-type i {
+    font-size: 10px; /* Adjust icon size */
+  }
+
+  /* Paid Label Color */
+  .event-type[style*="#28a745"] {
+    background-color: #28a745; /* Green for Paid */
+  }
   </style>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
@@ -124,7 +181,7 @@
       </section>
       <!-- Home About Section End -->
   
-    <!-- latest event section begin -->
+ <!-- latest event section begin -->
 <section class="latest-event spad">
   <div class="container">
     <div class="row">
@@ -136,57 +193,39 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-lg-6">
-        <div
-          class="latest-item set-bg large-item"
-          data-setbg="{% static 'img/blog/latest-b/latest-1.jpg' %}"
-        >
-          <!-- <div class="li-tag">Marketing</div> -->
-          <div class="li-text">
-            <h4>
-              <a href="./blog-details.html">Improve You Business Cards And Enchan Your Sales</a>
-            </h4>
-            <span><i class="fa fa-clock-o"></i> 19th May, 2019</span>
+      {% for event in events %}
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="latest-item set-bg" data-setbg="{% static 'img/blog/latest-b/latest-2.jpg' %}">
+          <!-- Event Tag -->
+          <div class="li-tag" style="background-color: #ee8425;">Marketing</div>
+          <!-- Paid/Free Label -->
+           {% if event.is_free %}
+          <div class="event-type" style="background-color: #28a745;">
+            <i class="fas fa-check-circle"></i>Free
           </div>
-        </div>
-      </div>
-      <div class="col-lg-6">
-        <div
-          class="latest-item set-bg"
-          data-setbg="{% static 'img/blog/latest-b/latest-2.jpg' %}"
-        >
-          <!-- <div class="li-tag">Experience</div> -->
+          {% else %}
+          <div class="event-type" style="background-color: red;">
+            <i class="fas fa-dollar-sign"></i>Paid
+          </div>
+          {% endif %}
           <div class="li-text">
             <h5>
-              <a href="./blog-details.html"
-                >All users on MySpace will know that there are millions of
-                people out there.</a
-              >
-            </h5>
-            <span><i class="fa fa-clock-o"></i> 19th May, 2019</span>
-          </div>
-        </div>
-        <div
-          class="latest-item set-bg"
-          data-setbg="{% static 'img/blog/latest-b/latest-3.jpg' %}"
-        >
-          <!-- <div class="li-tag">Marketing</div> -->
-          <div class="li-text">
-            <h5>
-              <a href="./blog-details.html"
-                >A Pocket PC is a handheld computer, which features many of
-                the same capabilities.</a
-              >
+
+              <a href="./blog-details.html">
+                {{event.name}}
+              </a>
             </h5>
             <span><i class="fa fa-clock-o"></i> 19th May, 2019</span>
           </div>
         </div>
       </div>
+      {% endfor %}
     </div>
   </div>
 </section>
 <!-- latest event section end -->
-  
+
+
     <!-- Pricing Section Begin -->
 <section
 class="pricing-section set-bg spad"
