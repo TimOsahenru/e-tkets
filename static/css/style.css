@@ -2389,7 +2389,9 @@ ol {
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
 	.nav-menu .primary-btn.top-btn {
-		display: none;
+		display: inline-block;
+		margin-left: auto;
+		/* display: none; */
 	}
 	.nav-menu .mainmenu ul li {
 		margin-right: 20px;
@@ -2449,7 +2451,10 @@ ol {
 		display: none;
 	}
 	.nav-menu .primary-btn.top-btn {
-		display: none;
+		display: inline-block;
+		margin-left: auto;
+		margin-top: 10px;
+		/* display: none; */
 	}
 	.slicknav_btn {
 		margin: 34px 0;
