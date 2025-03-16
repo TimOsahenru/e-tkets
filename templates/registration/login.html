@@ -3,13 +3,30 @@
 {% block title %}{{block.super}} Login Page{% endblock %}
 {% block content %}
 {% load static %}
+<style>
+    .logo-text {
+  font-family: 'Poppins', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: #333;
+  text-transform: lowercase;
+  letter-spacing: 1px;
+  text-decoration: none;
+}
+
+.logo-text:hover {
+  color: #ee8425;
+}
+</style>
 <header class="header-section">
   <div class="container">
     <div class="logo">
       <a href="/">
-        <img src="{% static 'img/logo.png' %}" alt="">
+    <!-- Text Logo -->
+    <span class="logo-text">e-tkets</span>
       </a>
     </div>
+
     <div id="mobile-menu-wrap"></div>
   </div>
 </header>
