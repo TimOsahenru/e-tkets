@@ -861,7 +861,7 @@ ol {
 	font-size: 14px;
 	color: #ffffff;
 	display: inline-block;
-	padding: 5px 18px;
+	padding: 5px 10px;
 	border-radius: 2px;
 	position: absolute;
 	left: 30px;
@@ -2498,3 +2498,19 @@ ol {
     outline: none !important;
     border: none !important; 
 }
+
+/* Footer Text Logo Styling */
+.footer-logo-text {
+	font-family: 'Poppins', sans-serif; /* Use the same font as the header */
+	font-size: 24px;
+	font-weight: 700;
+	color: #ffffff; /* Adjust color as needed */
+	text-transform: lowercase; /* Ensure lowercase */
+	letter-spacing: 1px;
+	text-decoration: none;
+	transition: color 0.3s ease;
+  }
+  
+  .footer-logo-text:hover {
+	color: #ee8425; /* Change color on hover */
+  }
