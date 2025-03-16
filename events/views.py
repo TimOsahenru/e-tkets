@@ -7,7 +7,9 @@ from events.models import Event
 
 
 def home_page(request):
-    return render(request, 'index.html')
+    events = Event.objects.all()
+
+    return render(request, 'index.html', {'events': events})
 
 
 @login_required(login_url='login')
