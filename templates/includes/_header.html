@@ -17,16 +17,19 @@
             <li><a href="#">How it works</a></li>
             <li><a href="#">Discover events</a></li>
             <li><a href="#">Contacts</a></li>
+            <div class="auth-btn">
+              {% if request.user.is_authenticated %}
+              <!-- Profile Icon -->
+              <a href="{% url 'profile' %}">
+                <i class="fas fa-user"></i> Profile
+              </a>
+              {% else %}
+              <a href="{% url 'login' %}">Login</a>
+              {% endif %}
+            </div>
           </ul>
         </nav>
-        {% if request.user.is_authenticated %}
-        <!-- Profile Icon -->
-        <a href="{% url 'profile' %}" class="primary-btn top-btn mobile-btn">
-          <i class="fas fa-user"></i> Profile
-        </a>
-        {% else %}
-        <a href="{% url 'login' %}" class="primary-btn top-btn mobile-btn">Login</a>
-        {% endif %}
+     
       </div>
     </div>
   </div>
