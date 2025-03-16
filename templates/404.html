@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{{ block.super }} Page Not Found{% endblock %}
+{% block content %}
+<style>
+  /* 404 Page Specific Styles */
+  .error-section {
+      padding: 60px 0;
+      padding-top: 80px;
+      transition: margin-left 0.3s ease;
+  }
+  
+  .error-content {
+      background: #ffffff;
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+  }
+  
+  .error-content h1 {
+      font-size: 48px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: #171822;
+  }
+  
+  .error-content p {
+      font-size: 18px;
+      color: #6a6b7c;
+      margin-bottom: 30px;
+  }
+  
+  .error-content a {
+      background: #ee8425;
+      color: #ffffff;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+  }
+  
+  .error-content a:hover {
+      background: #7d3b02;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 767px) {
+      .error-section {
+          margin-left: 0;
+      }
+      
+      .error-content {
+          padding: 20px;
+      }
+      
+      .error-content h1 {
+          font-size: 36px;
+      }
+      
+      .error-content p {
+          font-size: 16px;
+      }
+  }
+</style>
+
+<!-- 404 Error Section Begin -->
+<section class="error-section spad">
+  <div class="container">
+      <!-- 404 Error Content -->
+      <div class="error-content">
+          <h1>404 - Page Not Found</h1>
+          <p>Oops! The page you're looking for doesn't exist or has been moved.</p>
+          <a href="/">Go Back Home</a>
+      </div>
+  </div>
+</section>
+<!-- 404 Error Section End -->
+
+{% include 'includes/_footer.html' %}
+<!-- Toggle Menu Script -->
+<script>
+  function toggleMenu() {
+      const profileNav = document.querySelector('.profile-nav');
+      profileNav.classList.toggle('active');
+  }
+</script>
+{% endblock %}

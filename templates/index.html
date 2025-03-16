@@ -32,22 +32,6 @@
   font-size: 16px;
 }
 
-/* Footer Text Logo Styling */
-.footer-logo-text {
-  font-family: 'Poppins', sans-serif; /* Use the same font as the header */
-  font-size: 24px;
-  font-weight: 700;
-  color: #ffffff; /* Adjust color as needed */
-  text-transform: lowercase; /* Ensure lowercase */
-  letter-spacing: 1px;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-.footer-logo-text:hover {
-  color: #ee8425; /* Change color on hover */
-}
-
 /* Add this CSS to your stylesheet */
 .price-item {
   height: 100%; /* Ensure all cards take full height */
@@ -195,9 +179,9 @@
     <div class="row">
       {% for event in events %}
       <div class="col-lg-4 col-md-6 mb-4">
-        <div class="latest-item set-bg" data-setbg="{% static 'img/blog/latest-b/latest-2.jpg' %}">
+        <div class="latest-item set-bg" data-setbg="{% static 'img/blog/latest-b/latest-3.jpg' %}">
           <!-- Event Tag -->
-          <div class="li-tag" style="background-color: #ee8425;">Marketing</div>
+          <div class="li-tag" style="background-color: #333;">{{event.event_type|title}}</div>
           <!-- Paid/Free Label -->
            {% if event.is_free %}
           <div class="event-type" style="background-color: #28a745;">
