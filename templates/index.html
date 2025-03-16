@@ -34,7 +34,7 @@
 
 /* Add this CSS to your stylesheet */
 .price-item {
-  height: 100%; /* Ensure all cards take full height */
+  height: 90%; /* Ensure all cards take full height */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -181,7 +181,7 @@
       <div class="col-lg-4 col-md-6 mb-4">
         <div class="latest-item set-bg" data-setbg="{% static 'img/blog/latest-b/latest-3.jpg' %}">
           <!-- Event Tag -->
-          <div class="li-tag" style="background-color: #333;">{{event.event_type|title}}</div>
+          <div class="li-tag" style="background-color: #333; width: 50%;">{{event.event_type|title}}</div>
           <!-- Paid/Free Label -->
            {% if event.is_free %}
           <div class="event-type" style="background-color: #28a745;">
@@ -244,7 +244,6 @@ data-setbg="{% static 'img/pricing-bg.jpg' %}"
         </ul>
       </div>
     </div>
-    <span></span>
     <div class="col-lg-4 col-md-8">
       <div class="price-item">
         <h4>Selling tickets</h4>
