@@ -63,3 +63,8 @@ def register(request):
         user_form = UserRegisterationForm()
 
     return render(request, 'register.html', {'user_form': user_form})
+
+
+
+def custom_404_view(request, exception):
+    return render(request, '404.html', status=404)
