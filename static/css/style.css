@@ -399,82 +399,6 @@ ol {
 	content: "";
 }
 
-/*---------------------
-  Member Item
------------------------*/
-
-.team-member-section {
-	overflow: hidden;
-}
-
-.member-item {
-	width: 20%;
-	float: left;
-	height: 420px;
-	position: relative;
-	overflow: hidden;
-}
-
-.member-item:hover .mi-social {
-	top: 0;
-}
-
-.member-item:hover .mi-text {
-	left: 20px;
-}
-
-.member-item .mi-social {
-	text-align: center;
-	position: relative;
-	top: -60px;
-	-webkit-transition: all 0.3s ease-out;
-	-o-transition: all 0.3s ease-out;
-	transition: all 0.3s ease-out;
-}
-
-.member-item .mi-social .mi-social-inner {
-	display: inline-block;
-	padding: 10px 23px 8px;
-	border-radius: 0 0 4px 4px;
-}
-
-.member-item .mi-social .mi-social-inner a {
-	display: inline-block;
-	font-size: 18px;
-	color: #ffffff;
-	margin-right: 10px;
-}
-
-.member-item .mi-social .mi-social-inner a:last-child {
-	margin-right: 0;
-}
-
-.member-item .mi-text {
-	background: #ffffff;
-	padding: 16px 0 18px 25px;
-	position: absolute;
-	left: -500px;
-	bottom: 20px;
-	width: calc(100% - 40px);
-	-webkit-transition: all 0.5s ease-out;
-	-o-transition: all 0.5s ease-out;
-	transition: all 0.5s ease-out;
-}
-
-.member-item .mi-text h5 {
-	font-size: 20px;
-	color: #171822;
-	font-weight: 600;
-	margin-bottom: 5px;
-}
-
-.member-item .mi-text span {
-	font-size: 16px;
-	color: #f44949;
-	display: block;
-}
-
-
 
 /*---------------------
   Pricing Section
@@ -1185,12 +1109,12 @@ ol {
 	}
 	.slicknav_nav a:hover {
 		border-radius: 0;
-		background: #f44949;
+		/* background: #f44949; */
 		color: #ffffff;
 	}
 	.slicknav_nav .slicknav_row:hover {
 		border-radius: 0;
-		background: #f44949;
+		/* background: #f44949; */
 		color: #ffffff;
 	}
 	.member-item .mi-text {
@@ -1209,9 +1133,21 @@ ol {
 	.auth-btn {
 		background-color: transparent;
 		font-size: 16px;
-		border-radius: 50px;
+		/* border-radius: 50px; */
 		font-weight: 600;
 	}
+
+	.auth-btn a {
+		background-color: transparent;
+	}
+
+	.auth-btn a:active {
+		background-color: transparent;
+	}
+
+	  .auth-btn:hover {
+		background-color: transparent;
+	} 
 
 	.bh-text h2,
 	.hero-section .hero-text h2 {
