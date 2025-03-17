@@ -41,7 +41,7 @@
       transition: all 0.3s ease;
   }
   
-  .profile-nav .nav-links a:hover {
+  /* .profile-nav .nav-links a:hover {
       background: #ee8425;
       color: #ffffff;
   }
@@ -49,7 +49,7 @@
 .profile-nav .nav-links a.active {
     background: #ee8425;
     color: #ffffff;
-}
+} */
   
 .profile-nav .logout-btn {
         width: 100%;
@@ -154,10 +154,10 @@
           left: 0; 
       }
 
-      .profile-nav .nav-links a.active {
+      /* .profile-nav .nav-links a.active {
     background: #ee8425;
     color: #ffffff;
-}
+} */
       
       .profile-nav .menu-icon {
           display: block;
@@ -183,10 +183,12 @@
 
           <!-- Nav Links -->
           <div class="nav-links">
-              <a href="/"><i class="fa fa-home"></i> Home</a> 
-              <a href="{% url 'profile' %}" class="{% if active_page == 'event_delete' %}active{% endif %}"><i class="fa fa-calendar"></i> Events</a>
-              <a href="#"><i class="fa fa-user"></i> Account</a>
-          </div>
+            <a href="/"><i class="fa fa-home"></i> Home</a> 
+            <a href="{% url 'profile' %}" class="{% if active_page == 'profile' %}active{% endif %}"><i class="fa fa-calendar"></i> Events</a>
+            <a href="#"><i class="fa fa-user"></i> Account</a>
+            <a href="#"><i class="fa fa-eye"></i> Published <span style="color: green;">7</span></a>
+            <a href="#"><i class="fa fa-edit"></i> Draft <span style="color: red;">4</span></a>
+        </div>
 
           <!-- Logout Button -->
           <form method="POST" action="{% url 'logout' %}">
