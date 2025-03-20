@@ -7,7 +7,7 @@ from events.models import Event
 
 
 def home_page(request):
-    events = Event.objects.all()
+    events = Event.objects.all()[:3]
 
     return render(request, 'index.html', {'events': events})
 

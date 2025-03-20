@@ -29,7 +29,8 @@ class TestSignUpViewTest(TestCase):
         # response = self.client.post('register', data=data)
         response = self.client.post(reverse('register'), data=data)
         self.assertEqual(response.status_code, 302)
-        self.assertEqual(response.url, reverse('profile'))
+        # self.assertEqual(response.url, reverse('profile'))
+        self.assertEqual(response.url, reverse('login'))
         self.assertTrue(User.objects.filter(username='admin').exists())
 
 

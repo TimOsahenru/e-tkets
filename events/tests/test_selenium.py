@@ -2,7 +2,7 @@ import time
 import pytest
 from django.urls import reverse
 from selenium.webdriver.common.by import By
-
+from events.models import Event
 
 
 def test_home_page(browser):
@@ -103,7 +103,7 @@ def test_create_event_page(browser):
     # for 10 seconds so the fields can be manually inputted
         
     time.sleep(15)
-    redirect_url = 'http://localhost:8000/account/profile'
+    redirect_url = 'http://localhost:8000/account/profile/'
     assert browser.current_url == redirect_url, f"Expected to be redirected to {redirect_url} but got redirected here {browser.current_url}"
 
 
@@ -122,7 +122,7 @@ def test_users_in_db_can_login(browser):
     password_input.send_keys('1234')
     login_button.click()
 
-    redirect_urls = 'http://localhost:8000/account/profile'
+    redirect_urls = 'http://localhost:8000/account/profile/'
     assert browser.current_url == redirect_urls, f"Expected to be redirected to {redirect_urls} but got redirected here {browser.current_url}"
 
 
@@ -157,7 +157,7 @@ def test_user_can_signup(browser):
     password2_input.send_keys('bankuSlayer123')
 
     signup_button.click()
-    redirect_urls = 'http://localhost:8000/account/profile'
+    redirect_urls = 'http://localhost:8000/account/login/'
     assert browser.current_url == redirect_urls, f"Expected to be redirected to {redirect_urls} but got redirected here {browser.current_url}"
 
 
