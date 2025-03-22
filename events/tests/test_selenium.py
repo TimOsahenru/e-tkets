@@ -4,7 +4,6 @@ from django.urls import reverse
 from selenium.webdriver.common.by import By
 from events.models import Event
 
-
 def test_home_page(browser):
     browser.get('http://localhost:8000/')
 
@@ -55,7 +54,6 @@ def test_home_page(browser):
     assert len(prices) == 3
 
 
-@pytest.mark.django_db
 def test_create_event_page(browser):
     browser.get('http://localhost:8000/' + reverse('create_event'))
 
@@ -73,8 +71,10 @@ def test_create_event_page(browser):
 
     event_name_input = browser.find_element(By.ID, 'id_name')
     event_description_input = browser.find_element(By.ID, 'id_description')
+
     start_date_input = browser.find_element(By.ID, 'id_start_date')
     end_date_input = browser.find_element(By.ID, 'id_end_date')
+
     location_input = browser.find_element(By.ID, 'id_location')
     location_tips_input = browser.find_element(By.ID, 'id_location_tips')
     call_for_direction_input = browser.find_element(By.ID, 'id_call_for_direction')
@@ -86,8 +86,11 @@ def test_create_event_page(browser):
 
     event_name_input.send_keys('March 2025 event')
     event_description_input.send_keys('... some random descriptions for this event')
-    start_date_input.send_keys()
-    end_date_input.send_keys()
+
+
+    browser.execute_script("arguments[0].value = '2025-03-01T10:00';", start_date_input)
+    browser.execute_script("arguments[0].value = '2025-03-02T10:00';", end_date_input)
+
     location_input.send_keys('Ghana')
     location_tips_input.send_keys('Africa')
     call_for_direction_input.send_keys('123456')
@@ -97,12 +100,7 @@ def test_create_event_page(browser):
         is_free_input.click()
 
     submit_button.click()
-    
-    # apprantly there's no significantly easy to mock datetime date in selenium
-    # when using datetime-local in an inpute field, so I have to sleep the process
-    # for 10 seconds so the fields can be manually inputted
         
-    time.sleep(15)
     redirect_url = 'http://localhost:8000/account/profile/'
     assert browser.current_url == redirect_url, f"Expected to be redirected to {redirect_url} but got redirected here {browser.current_url}"
 
@@ -177,3 +175,8 @@ def test_user_with_incomplete_form_can_signup(browser):
     signup_button.click()
     redirect_urls = 'http://localhost:8000/account/register/'
     assert browser.current_url == redirect_urls, f"Expected to be redirected to {redirect_urls} but got redirected here {browser.current_url}"
+
+
+
+# Test profile
+# Test CRUD event page
